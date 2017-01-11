@@ -1,0 +1,88 @@
+<head>
+<script>
+	ver={
+		maj: 1,
+		min: 7,
+		bug: 5
+	}
+</script>
+<title>Home</title>
+<!-- icon -->
+<link rel="shortcut icon" href="assets/icon.ico" type="image/x-icon">
+<link rel="icon" href="assets/icon.ico" type="image/x-icon">
+<!-- data -->
+<script src="data/changelog.js"></script>
+<script src="data/todo.js"></script>
+<script src="data/watchlist.js"></script>
+<!-- CSS -->
+<link href="style.css" type="text/css" rel="stylesheet"/>
+<!-- JavaScript -->
+<script>
+	localStorage.reloaded="0";
+	function adjHeight()
+	{
+		if(document.getElementById("back").getBoundingClientRect().top<60)
+			document.getElementById("back").style.top="60px";
+	}
+</script>
+<script src="js/buttons.js"></script>
+<script src="js/derp.js"></script>
+<script src="js/panes.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/play.js"></script>
+<script src="js/code.js"></script>
+</head>
+<body style="background: black" onload="fillContent(); working=true; adjHeight();">
+<div id="hidden">
+<div style="width:1200px;height:680px;margin-left: auto;margin-right: auto; text-align:center; position: relative" id="back">
+<h1 id="title" style="font-family:gooLarge; top: 30px; position: relative; color:red; font-size:70pt" onClick="derp()" contenteditable="true">Theta the Slime</h1>
+    <span id="splash">100% beatable. Guaranteed!</span>
+<div style="top: 177px" class="button" onClick="nav(-1)" id="button0"><div id="plat0" class="plat"></div><span class="buttontext">play game</span></div>
+<!---->
+<div style="top: 272px" class="button" onClick="nav(3)" id="button3"><div id="plat6" class="plat"></div><span class="buttontext">controls</span></div>
+<div style="top: 367" id="download" class="button" onClick="download()"><div id="plat9" class="plat"></div><span class="buttontext">download for modability and faster loading</span></div>
+<div style="top: 462" class="button" class="button"  onClick="if(!changeShown)showChange(); else{ hideChange();}"><div id="plat8" class="plat"></div><span class="buttontext">Changelog</span></div>
+<div  style="top: 557" class="button" class="button" onClick="if(!creditsShown)showCredits(); else{ hideCredits();}"><div id="plat7" class="plat"></div><span class="buttontext">Credits</span></div>
+<!---->
+<div id="player" style="width: 30px; height: 30px; position: absolute; background: url(assets/chars/0/0.png)"></div>
+<div id="credits" style="position: absolute; left:53px; top: 53px; background: black; width: 1100px; height: 580px; display: none; border: 3px solid white">
+    <div style="width: 30px; height: 30px; background: url(assets/stageimg/close.png); position: absolute; top: 0px; right: 0px;" onClick="hideCredits()"></div>
+    <h1 class="menutext" style="text-decoration: underline;">CREDITS</h1>
+    <h3 class="menutext">Concept, Character art, Level design, Programming, Sound design, and UI created by</h3>
+    <h3 class="menutext">Jacob Allen</h3>
+    <br />
+    <br />
+    <h3 class="menutext">With the exception of song #2, all background images and songs</h3>
+    <h3 class="menutext">are in the public domain</h3>
+    <br />
+    <br />
+    <h3 class="menutext">song #2 composed by Jacob Allen</h3>
+    <br />
+    <br />
+    <h3 class="menutext">minigame makes use of DomenicoDeFelice's JSrand</h3>
+</div>
+<div id="changelog" style="position: absolute; left:53px; top: 53px; background: black; width: 1100px; height: 580px; display: none; border: 3px solid white; overflow-y: scroll">
+    <div style="width: 30px; height: 30px; background: url(assets/stageimg/close.png); position: absolute; top: 0px; right: 0px;" onClick="hideChange()"></div>
+    <span class="menutext" style="font-size: 12pt; display: inline-block" onClick="hideChange();showTodo();">todo</span>
+    <span class="menutext" style="font-size: 12pt; display: inline-block">|</span>
+    <span class="menutext" style="font-size: 12pt; display: inline-block" onClick="hideChange();showWatch();">bugs</span>
+    <h1 class="menutext" style="text-decoration: underline;">CHANGELOG</h1>
+</div>
+<div id="todo" style="position: absolute; left:53px; top: 53px; background: black; width: 1100px; height: 580px; display: none; border: 3px solid white; overflow-y: scroll">
+    <div style="width: 30px; height: 30px; background: url(assets/stageimg/close.png); position: absolute; top: 0px; right: 0px;" onClick="hideTodo()"></div>
+    <span class="menutext" style="font-size: 12pt; display: inline-block" onClick="hideTodo();showChange();">changelog</span>
+    <span class="menutext" style="font-size: 12pt; display: inline-block">|</span>
+    <span class="menutext" style="font-size: 12pt; display: inline-block" onClick="hideTodo();showWatch();">bugs</span>
+    <h1 class="menutext" style="text-decoration: underline;">TODO LIST</h1>
+</div>
+<div id="watchlist" style="position: absolute; left:53px; top: 53px; background: black; width: 1100px; height: 580px; display: none; border: 3px solid white; overflow-y: scroll">
+    <div style="width: 30px; height: 30px; background: url(assets/stageimg/close.png); position: absolute; top: 0px; right: 0px;" onClick="hideWatch()"></div>
+    <span class="menutext" style="font-size: 12pt; display: inline-block" onClick="hideWatch();showTodo();">todo</span>
+    <span class="menutext" style="font-size: 12pt; display: inline-block">|</span>
+    <span class="menutext" style="font-size: 12pt; display: inline-block" onClick="hideWatch();showChange();">changelog</span>
+    <h1 class="menutext" style="text-decoration: underline;">KNOWN BUGS</h1>
+</div>
+<span style="color:gray; position: absolute; left: 10px; bottom: 10px" class="noSelect" id="versionNumber"></span>
+</div>
+</div>
+</body>
