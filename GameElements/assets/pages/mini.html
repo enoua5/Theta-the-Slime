@@ -1,0 +1,511 @@
+<head>
+<title>MiniGame</title>
+<script>
+/*
+  jsrand v1.0
+  https://github.com/DomenicoDeFelice/jsrand
+  License: none/public domain, just keep this comment
+*/
+
+if (!window.dfd) {
+    window.dfd = {};
+}
+
+dfd.Srand = Srand = (function (oldValue) {
+    var constructor = function (seed) {
+	if (seed !== undefined) {
+	    this.seed(seed);
+	} else {
+	    this.randomize();
+	}
+    };
+
+    constructor._oldSrand = oldValue;
+
+    return constructor;
+})(window.Srand);
+
+Srand.prototype = {};
+
+// Sets or gets (if no argument is given) the seed
+// for the pseudo-random number generator.
+// The seed can be any float or integer number.
+Srand.seed = Srand.prototype.seed = function (seed) {
+    if (seed === undefined) {
+	return this._seed;
+    }
+
+    // Uses only one seed (mw), mz is fixed.
+    // Must not be zero, nor 0x9068ffff.
+    this._mz = 123456789;
+
+    return this._mw = this._seed = seed;
+};
+
+// Sets and returns a random seed.
+Srand.randomize = Srand.prototype.randomize = function () {
+    var seed = this.randomIntegerIn(1, 0xffffffff, Math.random());
+    this.seed(seed);
+
+    return seed;
+};
+
+// Returns a pseudo-random number between 0 inclusive and 1 exclusive.
+// Algorithm used is MWC (multiply-with-carry) by George Marsaglia.
+// Implementation based on:
+// - http://en.wikipedia.org/wiki/Random_number_generation#Computational_methods
+// - http://stackoverflow.com/questions/521295/javascript-random-seeds#19301306
+Srand.random = Srand.prototype.random = function () {
+    if (this._seed === undefined) {
+        this.randomize();
+    }
+
+    var mz = this._mz;
+    var mw = this._mw;
+
+    // The 16 least significant bits are multiplied by a constant
+    // and then added to the 16 most significant bits. 32 bits result.
+    mz = ((mz & 0xffff) * 36969 + (mz >> 16)) & 0xffffffff;
+    mw = ((mw & 0xffff) * 18000 + (mw >> 16)) & 0xffffffff;
+
+    this._mz = mz; 
+    this._mw = mw;
+
+    var x = (((mz << 16) + mw) & 0xffffffff) / 0x100000000;
+    return 0.5 + x;
+};
+
+
+// Utility function that returns a random float number
+// between a (inclusive) and b (exclusive).
+// If `x` is specified, it is used as the random number
+// (between 0 inclusive and 1 exclusive, e.g., Math.random()
+// could be passed as argument).
+// If `x` is not specified, object/Srand random() is used.
+Srand.randomIn = Srand.prototype.randomIn = function (a, b, x) {
+    if (x === undefined) {
+	x = this.random();
+    }
+
+    return a + x * (b - a);
+};
+
+// Utility function that returns a random integer between
+// min and max inclusive.
+// If `x` is specified, it is used as the random number
+// (between 0 inclusive and 1 exclusive, e.g., Math.random()
+// could be passed as argument).
+// If `x` is not specified, object/Srand random() is used.
+Srand.randomIntegerIn = Srand.prototype.randomIntegerIn = function (min, max, x) {
+    if (x === undefined) {
+        x = this.random();
+    }
+
+    return min + Math.floor(x * (max - min + 1));
+};
+
+// In the uncommon case the variable `Srand` is already used,
+// this function restores its initial value and returns the
+// Srand object (dfd.Srand can be used as well).
+Srand.noConflict = function () {
+    Srand = dfd.Srand._oldSrand;
+    return dfd.Srand;
+};
+</script>
+<style>
+*
+{
+    cursor: default;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+#playArea
+{
+position: absolute;
+left: 50%;
+right: 50%;
+margin-left:-500px;
+border: 1px solid white;
+width: 1000px;
+height: 700px;
+color: white;
+}
+#start
+{
+position: absolute;
+left: 50%;
+right: 50%;
+margin-left:-500px;
+background: black;
+z-index:100000000000000;
+text-align: center;
+color: white;
+overflow: hidden;
+}
+#prev
+{
+position: absolute;
+height: 20px;
+background: red;
+border: 2px solid white;
+border-radius: 40%;
+}
+#next
+{
+position: absolute;
+height: 20px;
+background: green;
+border: 2px solid white;
+border-radius: 40%;
+}
+#player
+{
+width: 50px;
+height: 50px;
+position: absolute;
+z-index: 10000;
+}
+#time
+{
+	color: white;
+	position: absolute;
+	top: -25px;
+}
+</style>
+<style id="style"></style>
+<script>
+faceright=false;
+var paths=window.location.href.split("assets");
+var path="";
+for(i=0; i<paths.length-1; i++)
+{
+	path+=paths[i]+"assets"
+}
+document.head.innerHTML+="<link rel='shortcut icon' href='"+path+"/icon.ico' type='image/x-icon'><link rel='icon' href='"+path+"/icon.ico' type='image/x-icon'>";
+//return to home screen
+function home()
+{
+	parentPathA=path.split("assets");
+	parentPath=""
+	for(i=0; i<parentPathA.length-1; i++)
+	{
+		parentPath+=parentPathA[i]
+		if(i!==parentPathA.length-2)
+			parentPath+="assets";
+	}
+	window.location.assign(parentPath+"game.html")
+}
+document.getElementById("style").innerHTML+="#player{background:url("+path+"/chars/5/highres.png);background-size: 266px 266px;}";
+var pose=
+{
+	left:{
+		walk:
+		[
+			[0*(5/3),0*(5/3)],
+			[40*(5/3),0*(5/3)],
+			[80*(5/3),0*(5/3)],
+			[40*(5/3),0*(5/3)],
+			[0*(5/3),0*(5/3)],
+			[120*(5/3),0*(5/3)],
+			[0*(5/3),40*(5/3)],
+			[120*(5/3),0*(5/3)]
+		],
+		jump:[120*(5/3),80*(5/3)],
+		fall:[40*(5/3),120*(5/3)],
+		stand:[80*(5/3),120*(5/3)]
+	},
+	right:{
+		walk:
+		[
+			[40*(5/3),40*(5/3)],
+			[80*(5/3),40*(5/3)],
+			[120*(5/3),40*(5/3)],
+			[80*(5/3),40*(5/3)],
+			[40*(5/3),40*(5/3)],
+			[0*(5/3),80*(5/3)],
+			[40*(5/3),80*(5/3)],
+			[0*(5/3),80*(5/3)]
+		],
+		jump:[80*(5/3),80*(5/3)],
+		fall:[0*(5/3),120*(5/3)],
+		stand:[120*(5/3),120*(5/3)]
+	}
+}
+over=false
+function pullSeed(string)
+{
+	output=0
+	for(i=0; i<string.length; i++)
+	{
+		output+=string[i].charCodeAt()*(i+1);
+	}
+	return output;
+}
+function start()
+{
+Srand.seed(pullSeed(document.getElementById("seed").value));
+red=128;
+green=128;
+blue=128;
+document.getElementById("start").style.height="0px";
+function overlap(rect1, rect2)
+{
+rect1=rect1.getBoundingClientRect();
+rect2=rect2.getBoundingClientRect();
+return !(rect1.right <= rect2.left || 
+                rect1.left >= rect2.right || 
+                rect1.bottom <= rect2.top || 
+                rect1.top >= rect2.bottom);
+}
+function nextLoaded()
+{
+next=document.getElementById("next");
+player=document.getElementById("player")
+prev=document.getElementById("prev");
+}
+intense=1;
+function move()
+{
+	intense=2;
+	prev.style.width=next.style.width;
+	prev.style.top=next.style.top;
+	prev.style.left=next.style.left;
+	place()
+}
+function place()
+{
+	width=Math.floor((Srand.random()*500)+50);
+	next.style.width=width+"px";
+	left=Math.floor((Srand.random()*(1000-width)))
+	ftop=Math.floor((Srand.random()*630)+50)
+	next.style.left=left+"px";
+	next.style.top=ftop+"px";
+	flip=Math.floor((Srand.random()*2000/intense)+1000/intense)
+	document.getElementById("timeleft").innerHTML = Math.floor(flip/100)/10
+	setTimeout(move,flip)
+}
+function drop()
+{
+	console.log("drop function")
+	if(!dropped)
+	{
+		console.log("passed")
+		dropped=true;
+		fallspeed=30;
+	}
+}
+timer=0;
+speed=20;
+fallspeed=0;
+setTimeout(place, 20)
+setTimeout(gravity, 20)
+function gravity()
+{
+	onGround=false;
+	if(Math.floor(Srand.random()*3)===0)
+	{
+		red=Math.max(0,Math.min(Math.ceil(Srand.random()*5)-3+red,255));
+	}
+	else if(Math.floor(Srand.random()*2)===0)
+	{
+		green=Math.max(0,Math.min(Math.ceil(Srand.random()*5)-3+green,255));
+	}
+	else
+	{	
+		blue=Math.max(0,Math.min(Math.ceil(Srand.random()*5)-3+blue,255));
+	}
+	document.getElementById("playArea").style.background="rgb("+red+","+green+","+blue+")";
+
+	timer++;
+	document.getElementById("time").innerHTML=Math.floor(timer/50);
+	flip-=20
+	document.getElementById("timeleft").innerHTML=Math.floor(flip/100)/10
+	if(parseInt(player.style.top)<0)
+	{
+		player.style.top="0px"
+		fallspeed=0;
+		dropped=false;
+	}
+	if(((overlap(player,prev)||overlap(player,next))&&!jumping)&&fallspeed>=0)
+	{
+		onGround=true;
+		fallspeed=0;
+		if(overlap(player,next))
+		{
+			player.style.top=(parseInt(next.style.top)-49)+"px"
+		}
+		else if(overlap(player, prev))
+		{
+			player.style.top=(parseInt(prev.style.top)-49)+"px"
+		}
+	}
+	else
+	{
+		player.style.top=(parseInt(player.style.top)+fallspeed)+"px"
+		fallspeed++;
+	}
+	if(moveleft)
+	{
+		player.style.left=(parseInt(player.style.left)-speed)+"px"
+	}
+	if(moveright)
+	{
+		player.style.left=(parseInt(player.style.left)+speed)+"px"
+	}
+	if(parseInt(player.style.left)<0)
+	{
+		player.style.left="0px"
+	}
+	if(parseInt(player.style.left)>950)
+	{
+		player.style.left="950px"
+	}
+	if(parseInt(player.style.top)>700)
+	{
+		gameover()
+	}
+		//determine displayed player frame
+		if(faceright)
+		{	
+			//console.log("right")	
+			correctPose=pose.right
+		}
+		else
+		{
+			//console.log("left")
+			correctPose=pose.left
+		}
+		if(!onGround)
+		{
+			if(fallspeed>0)
+			{
+				correctPose=correctPose.fall
+			}
+			else
+			{
+				correctPose=correctPose.jump
+			}
+			walkFrame=0;
+		}
+		else if(!moveleft&&!moveright)
+		{
+			correctPose=correctPose.stand
+			walkFrame=0;
+		}
+		else
+		{
+			correctPose=correctPose.walk[Math.floor(walkFrame)];
+			walkFrame+=0.25;
+			if(walkFrame>=pose.left.walk.length)
+			{
+				walkFrame=0;
+			}
+		}
+		document.getElementById("player").style.backgroundPosition="-"+correctPose[0]+"px -"+correctPose[1]+"px";
+	if(!over)
+	setTimeout(gravity, 20)
+}
+jumping=false
+jumpPower=40;
+function jump()
+{
+	if(overlap(player,prev)||overlap(player,next))
+	{
+		fallspeed=0-jumpPower;
+		jumping=true;
+		setTimeout(function(){jumping=false}, 20)
+	}
+}
+moveleft=0;
+moveright=0;
+window.addEventListener('keydown', function(event) {
+  switch (event.keyCode) {
+    case 40: // down
+      drop()
+    break;
+    case 37: // Left
+      moveleft=1;
+      faceright=false;
+    break;
+
+    case 38: // Up
+      jump()
+    break;
+
+    case 32: // Up
+      jump()
+    break;
+
+    case 39: // Right
+      moveright=1;
+      faceright=true;
+    break;
+
+
+  }
+}, false);
+window.addEventListener('keyup', function(event) {
+  switch (event.keyCode) {
+    case 37: // Left
+      moveleft=0
+    break;
+
+    case 39: // Right
+      moveright=0
+    break;
+  }
+}, false);
+}
+function gameover()
+{
+	over=true
+	setTimeout(function(){document.getElementById("playArea").style.background="black"},21)
+	document.getElementById("playArea").style.textAlign="center"
+	document.getElementById("playArea").innerHTML="<h1>GAME OVER</h1><br></br><h2>score: "+Math.floor(timer/50)+"</h2><br></br><h3 onClick='location.reload()'>play again?</h3><br></br><br></br><h2>"
+}
+function spoil()
+{
+	if(parseInt(document.getElementById("spoiler").style.height)===15)
+	{
+		document.getElementById("spoiler").style.height="50px";
+		document.getElementById("seed").select();
+	}
+	else
+	{
+		document.getElementById("spoiler").style.height="15px"
+	}
+}
+function createSeed()
+{
+document.getElementById("seed").value=Math.floor(Math.random()*1000000)
+}
+setTimeout(createSeed, 20);
+function load()
+{
+	document.body.innerHTML+="<div style='width: 120px; height: 30px; position: absolute; top:0; right: 0; background:url("+path+"/stageimg/home.png)' onClick='home()'></div>";
+}
+</script>
+</head>
+<body style="background: black;" onload="load()">
+<div id="start" style="width: 1005px; height: 705px;">
+<h1 style="font-size: 30pt">MiniGame</h1>
+<h1 onClick="start();">START</h1>
+<div id="spoiler" onClick="spoil()" style="height:15px; overflow: hidden; background: grey; width: 300px; position: absolute; left:350px">
+change seed
+<br/>
+seed:<input id="seed" type="textbox" value="0"></input>
+</div>
+</div>
+<div id="playArea" style="background: rgb(0,0,0)">
+<h1 id="time"></h1>
+<div id="player" style="top: 450px; left: 450px;"></div>
+<div id="next" style="width: 0px; top: 500px; left: 250px" ></div>
+<div id="prev" style="width: 500px; top: 500px; left: 250px"><h2 id='timeleft' style="z-index:10000000000" onload="nextLoaded()"></h2></div>
+
+</div>
+</body>

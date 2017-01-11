@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Theta the Slime</title>
+<style id="filters"></style>
+<link rel='shortcut icon' href='../icon.ico' type='image/x-icon'><link rel='icon' href='../icon.ico' type='image/x-icon'>
+
+<link rel="stylesheet" type="text/css" href="css/player.css"/>
+
+<script src="js/path.js"></script>
+<script src="js/player/settings.js"></script>
+<script src="js/player/audio.js"></script>
+<script src="js/player/string.js"></script>
+<script src="levels/premade.js"></script>
+<script src="levels/bonus.js"></script>
+<script src="levels/special.js"></script>
+<script src="levels/custom.js"></script>
+<script src="js/player/load.js"></script>
+<script src="js/player/select.js"></script>
+<script src="js/player/pause.js"></script>
+<script src="js/player/start.js"></script>
+<script src="js/player/keys.js"></script>
+<script src="js/player/functions.js"></script>
+<script src="js/player/gameloop.js"></script>
+
+</head>
+<body style="background: black; text-align: center;-webkit-user-select: none;" onload="setTimeout(displaySelect, 100); originalGravity=1; gamePlay();">
+<div id="levelSelect" style="width:1200px; height:680px; display:inline-block; position:relative; top: 60px;">
+	<h1 style="-webkit-user-select: none;font-size: 100px; margin-top: 10px; color: #000000">level select</h1>
+	<div id="levels" style="position: absolute; width:1100px; height: 520px; left: 50px; top: 110px; overflow-y: scroll">
+	<div id="reset" style="color: white; background: #b00000; position: absolute; top: 10px; left: 10px; height: 20px; width: 100px;-webkit-user-select: none; border-radius: 5px; border: 1px solid white;" onClick="if(confirm('are you sure you want to reset your save data?')){resetSave();}">reset save data</div>
+	<span id="loadingThing" style="color: white; position: absolute; top: 200px; left: 500px">Loading, please wait...</span>
+	</div>
+	<div id="background" style="height:680px; position: absolute; left:0; top: 0; width: 0; background: grey; overflow: hidden">
+		<div id="splats" style="width: 1200px; height: 680px; position: absolute; top: 0; left: 0;"></div>
+		<div id="blocks" style="width: 12000px; height: 680px; position: absolute; top: 0; left: 0; overflow: hidden">
+			<div id="data" style="width: 1200px; height: 680px; position: absolute; top: 0; left: 0;"></div>
+			<div id="playerArea" style="overflow: hidden; width: 1200px; height: 680px; position: absolute; top: 0; left: 0;">
+				<div id="score" style="color: white; position: absolute; left:0; z-index: 999998">
+					<span>deaths: </span><span id="deathScore"></span><br/>
+					<span>coins: </span><span id="coinScore"></span>
+				</div>
+				<div id="pauseButton" style="position: absolute; top: 0; right: 0; width: 40px; height: 40px; z-index: 999999" onClick="pause()"></div>
+				<div id="player" style="position: absolute; height: 30px; width: 30px"></div>
+				<div id="loadingScreen" style="z-index:1000000; background: black; width: 0px; height: 680px; position: absolute; top: 0; left: 0; overflow: hidden;-webkit-user-select: none;">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--spike cutters-->
+<svg height="0" width="0">
+<defs>
+<clipPath id="upspike">
+<path
+     style="fill:#000000;stroke:#000000;stroke-width:40px;0.26458332px;"
+     d="M 0,40 V 0 H 41 V 40 L 30,0 20,40 10,0 Z"/>
+</clipPath>
+<clipPath id="downspike">
+<path
+     style="fill:#000000;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 41,0 V 40 H 0 V 0 L 10,40 20,0 30,40 Z"/>
+</clipPath>
+<clipPath id="rightspike">
+<path
+     style="fill:#000000;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 0,0 H 41 V 40 H 0 L 41,30 0,20 41,10 Z"/>
+</clipPath>
+<clipPath id="leftspike">
+<path
+     style="fill:#000000;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 41,40 H 0 V 0 H 40 L 0,10 41,20 0,30 Z"/>
+</clipPath>
+</defs>
+</svg>
+</body>
+</html>

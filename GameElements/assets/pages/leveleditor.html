@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Level Editor</title>
+<link rel='shortcut icon' href='../icon.ico' type='image/x-icon'>
+<link rel='icon' href='../icon.ico' type='image/x-icon'>
+
+<link rel="stylesheet" type="text/css" href="css/editor.css"/>
+
+<script src="js/editor/makefile.js"></script>
+<script src="js/editor/special.js"></script>
+<script src="js/editor/load.js"></script>
+<script src="js/editor/vars.js"></script>
+<script src="js/editor/build.js"></script>
+<script src="js/editor/update.js"></script>
+<script src="js/editor/audio.js"></script>
+
+<style id="playerStats"></style>
+<style id="arrowfont"></style>
+</head>
+<body onload="build()" onunload="home()" style="background: black; text-align: center">
+<div style='width: 120px; height: 30px; position: absolute; top:0; right: 0; background:url(../stageimg/home.png)' onClick='home()'></div>
+<script>document.getElementById("arrowfont").innerHTML="@font-face{font-family: arrow;src: url(../fonts/arrow.ttf);}"</script>
+<div id="workarea" style="width:1400px; height:680px; display:inline-block; background:grey; position:relative; top: 60px">
+<div id="player" style="width:40px; height: 40px; background-position: -120px -120px;"></div>
+<div id='sidebar'>
+level name: <input id="name" type="textbox" value="name"/>
+subtitle: <input id="sub" type="textbox" value=""/>
+<br>
+<div class="selector">
+player: <select id="playerSelect" onChange="player=parseInt(this.value)">
+<option value="0">red</option>
+<option value="1">orange</option>
+<option value="2">grey</option>
+<option value="3">green</option>
+<option value="4">cyan</option>
+<option value="5">blue</option>
+<option value="6">purple</option>
+<option value="7">rainbow</option>
+<option value="8">corrupt</option>
+</select>
+</div>
+<button onclick="toggleCharOpt()">Character Filters</button>
+<br>
+	<div id="charopt" style="overflow:hidden; height:0;">
+		<p style="font-size: 11px; color: red; background: black">Note: these options will be reset when opening a level file!</p>
+		<p>blur</p>
+		<input id="blur" type="range" value="0" min="0" max="30" onchange="filters.blur=this.value"></input>
+		<p>brightness</p>
+		<input id="brightness" type="range" value="100" min="0" max="400" onchange="filters.brightness=this.value"></input>
+		<p>contrast</p>
+		<input id="contrast" type="range" value="100" min="0" max="400" onchange="filters.contrast=this.value"></input>
+		<p>grey</p>
+		<input id="grey" type="range" value="0" min="0" max="100" onchange="filters.grayscale=this.value"></input>
+		<p>hue-rotate</p>
+		<input id="hue" type="range" value="0" min="0" max="360" onchange="filters.hue=this.value"></input>
+		<p>invert</p>
+		<input id="invert" type="range" value="0" min="0" max="100" onchange="filters.invert=this.value"></input>
+		<p>opacity</p>
+		<input id="opacity" type="range" value="100" min="0" max="100" onchange="filters.opacity=this.value"></input>
+		<p>saturate</p>
+		<input id="saturate" type="range" value="100" min="0" max="400" onchange="filters.saturate=this.value"></input>
+		<p>sepia</p>
+		<input id="sepia" type="range" value="0" min="0" max="100" onchange="filters.sepia=this.value"></input>
+		<br>
+		<button onclick="filter='none'; resetfilters();">reset</button>
+	</div>
+<br>
+<div class="selector">
+theme: <select id="themeSelect" onChange="theme=parseInt(this.value)">
+<option value="0">sunrise</option>
+<option value="1">city</option>
+<option value="2">sunset</option>
+<option value="3">early morning</option>
+<option value="4">clouds</option>
+<option value="5">pond</option>
+<option value="6">tree</option>
+<option value="7">forest</option>
+<option value="8">night</option>
+<option value="9">rainbow</option>
+<option value="10">cave</option>
+<option value="11">moon</option>
+<option value="12">red</option>
+<option value="13">corrupt</option>
+</select>
+</div>
+<div class="selector">
+<div id="startAndStop"><div id="playButton" onClick="playMusic()"></div></div> music: <select id="musicSelect" onChange="music=parseInt(this.value)">
+<option value="0">0</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+</select>
+</div>
+<div class="selector">
+    block select: <select id="blockSelect" onChange="selected=parseInt(this.value)" style="text-align: center">
+        <option value="1"> Player</option>
+        <option disabled>-----</option>
+        <option value="0"> Air</option>
+  
+        <option value="2"> Block</option>
+        <option disabled>-----</option>
+        <option value="3"> Up Spike</option>
+        <option value="4"> Right Spike</option>
+        <option value="5"> Down Spike</option>
+        <option value="6"> Left Spike</option>
+        <option disabled>-----</option>
+        <option value="7"> Exit</option>
+        <option value="8"> Coin</option>
+        <option disabled>-----</option>
+        <option value="9"> Lava</option>
+        <option value="10"> Water</option>
+        <option disabled>-----</option>
+        <option value="11"> Left Conveyerbelt</option>
+        <option value="12"> Right Conveyerbelt</option>
+        <option disabled>-----</option>
+        <option value="13"> Spring Board</option>
+    </select>
+</div>
+    <br />
+    <button onclick="toggleSpecialList()">special options</button>
+    <div id="specialList" style="overflow:hidden; height:0;">
+	<p style="font-size: 11px; color: red; background: black">Note: these options will be reset when opening a level file!</p>
+        <input type="checkbox" id="moonGravity"/> Special Gravity <input id="gravityStrength" type="number" value="1" min="-2" max="2" step="0.1"/><br />
+        <input type="checkbox" id="gravitySwitch"/> Gravity Switch <input id="gravityTimer" type="number" value="3" min="0.02" step="0.02"/><br />
+        <input type="checkbox" id="lightflicker"/> Light Flicker<br />
+        <input type="checkbox" id="randomJumps"/> Random Jumps<br />
+        <input type="checkbox" id="limitedSplats"/> Limited Splats <input id="splatCount" type="number" value="5" min="0"/><br />
+        <input type="checkbox" id="skinRotation"/> Animated Skin<br />
+        <input type="checkbox" id="fireworks"/> Fireworks<br />
+        <input type="checkbox" id="background"/> Different Background <input id="color" type="color" value="#00ffff"/><br />
+        <input type="checkbox" id="corruption"/> Corruption<br />
+    </div>
+    <br /><br />
+<button onClick="show()">upload level for editing</button>
+<br/>
+<br/>
+<a download="level.js" id="download" style="color: white">download level file to play</a>
+<br>
+<br>
+</div>
+</body>
+<div id="loadbox" display="none"></div>
+</html>
