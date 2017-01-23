@@ -1,7 +1,7 @@
 var changelog=
-"<h3 class='menutext' style='text-align: left; margin-left: 10px'>version 1.8.0<br>\
+"<h3 class='menutext' style='text-align: left; margin-left: 10px'>version 1.7.5<br>\
 Started Jan 5, 2017<br>\
-Released [ongoing]<br>\
+Released Jan 19, 2017<br>\
 - Minor changes:<br>\
 - - Added extra compatibility with Firefox<br>\
 - - Reorganized main menu<br>\
