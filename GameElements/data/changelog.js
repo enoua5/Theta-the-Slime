@@ -5,6 +5,7 @@ Released Jan 19, 2017<br>\
 - Minor changes:<br>\
 - - Added extra compatibility with Firefox<br>\
 - - Reorganized main menu<br>\
+- - Removed mini game<br>\
 - - Major code clean-up<br>\
 - - Implemented auto spike-cut<br>\
 - - Changed pop-up font<br>\
