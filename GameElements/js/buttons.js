@@ -52,7 +52,7 @@ function fillContent()
     {
 	document.getElementById("watchlist").innerHTML+="<h3 class='menutext' style='text-align:left; margin-left: 10px; color:"+["red","green"][watchlist[l].resolved]+"'>"+(l.toString(16))+" - "+watchlist[l].content+"</h3>";
     }
-    document.getElementById("versionNumber").innerHTML="v"+ver.maj+"."+ver.min+"."+ver.bug;
+    document.getElementById("versionNumber").innerHTML="v"+ver.maj+"."+ver.min+"."+ver.bug+"a";
     if (sameArray(c3, [3, 14, 4, 3, 4, 5, 0, 3, 1]))
     {
         document.getElementById("player").style.background = "url(assets/chars/9/9.png)";
