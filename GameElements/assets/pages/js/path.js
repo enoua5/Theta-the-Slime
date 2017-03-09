@@ -10,6 +10,11 @@ function home()
 	}
 	window.location.assign(parentPath+"game.html")
 }
+function back()
+{
+	localStorage.reloaded="0";
+	window.location.assign("../../playmenu.html");
+}
 var paths=window.location.href.split("assets");
 var path="";
 for(i=0; i<paths.length-1; i++)

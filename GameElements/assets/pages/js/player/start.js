@@ -21,7 +21,8 @@ function launchLevel(which)
 		music: which.music,
 		theme: which.theme,
 		name: which.name,
-		sub: which.sub
+		sub: which.sub,
+		number: num-1
 	}
 	lFrameGround=1;
 	walkFrame=0;

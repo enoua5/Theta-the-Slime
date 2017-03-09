@@ -53,6 +53,7 @@ function displaySelect()
 	}
 	box.innerHTML+="<div style='position: absolute; top: 0;height: "+(((y)*250)+300)+"px; width: 10px'></div>";
 	document.body.innerHTML+="<div style='width: 120px; height: 30px; position: absolute; top:0; right: 0; background:url("+path+"/stageimg/home.png)' onClick='home()'></div>";
+	document.body.innerHTML+="<div style='width: 120px; height: 30px; position: absolute; top:0; right: 150px; background:url("+path+"/stageimg/back.png)' onClick='back()'></div>";
 	document.getElementById("loadingThing").innerHTML="";
 }
 function toSelect()

@@ -1,13 +1,15 @@
 var changelog=
 "<h3 class='menutext' style='text-align: left; margin-left: 10px'>version 1.7.5<br>\
 Started Jan 5, 2017<br>\
-Released Jan 19, 2017<br>\
+Released Jan 19, 2017 and Mar 9, 2017<br>\
 - Minor changes:<br>\
 - - Added extra compatibility with Firefox<br>\
 - - Reorganized main menu<br>\
 - - Removed mini game<br>\
 - - Major code clean-up<br>\
 - - Implemented auto spike-cut<br>\
+- - Added reset button to pause menu<br>\
+- - Added back button to level select<br>\
 - - Changed pop-up font<br>\
 - - Will now report which bugs were fixed<br>\
 - Bugfixes:<br>\
