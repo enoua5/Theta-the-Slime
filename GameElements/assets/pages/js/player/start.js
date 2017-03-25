@@ -21,8 +21,7 @@ function launchLevel(which)
 		music: which.music,
 		theme: which.theme,
 		name: which.name,
-		sub: which.sub,
-		number: num-1
+		sub: which.sub
 	}
 	lFrameGround=1;
 	walkFrame=0;
@@ -103,8 +102,8 @@ function launchLevel(which)
 	    	if (tick >= curTime + 1000)
 	    	{
 	            //workingIntro.pause();
-	            workingIntro.currentTime = 0;
-	            workingLoop.play();
+	            //workingIntro.currentTime = 0;
+	            //workingLoop.play();
 	            respawn = [playerPos[0], playerPos[1]]
 	            working = true;
 	            document.getElementById("loadingScreen").style.width = "0";
