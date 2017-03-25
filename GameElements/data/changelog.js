@@ -1,5 +1,15 @@
 var changelog=
-"<h3 class='menutext' style='text-align: left; margin-left: 10px'>version 1.7.5<br>\
+"<h3 class='menutext' style='text-align: left; margin-left: 10px'>version 1.8.0<br>\
+Started Mar 24, 2017<br>\
+Released --- --, ----<br>\
+- Minor changes:<br>\
+- - Replaced track 0<br>\
+- - Added copyright notices to credits<br>\
+- - Song names in level editor<br>\
+- Bugfixes:<br>\
+- - Fixed loop playing over intro<br>\
+</h3><hr>\
+<h3 class='menutext' style='text-align: left; margin-left: 10px'>version 1.7.5<br>\
 Started Jan 5, 2017<br>\
 Released Jan 19, 2017 and Mar 9, 2017<br>\
 - Minor changes:<br>\
