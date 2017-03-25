@@ -1,5 +1,5 @@
 var todos=[
-"Credit songs",
+"Replace NonCommercial and Non-CC songs",
 "Add portals",
 "Add one-way blocks",
 "Add ice blocks",
