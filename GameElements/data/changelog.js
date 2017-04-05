@@ -1,5 +1,5 @@
 var changelog=
-"<h3 class='menutext' style='text-align: left; margin-left: 10px'>version 1.8.0<br>\
+"<h3 class='menutext' style='text-align: left; margin-left: 10px'>version β.8.0<br>\
 Started Mar 24, 2017<br>\
 Released --- --, ----<br>\
 - Minor changes:<br>\
@@ -9,7 +9,7 @@ Released --- --, ----<br>\
 - Bugfixes:<br>\
 - - Fixed loop playing over intro<br>\
 </h3><hr>\
-<h3 class='menutext' style='text-align: left; margin-left: 10px'>version 1.7.5<br>\
+<h3 class='menutext' style='text-align: left; margin-left: 10px'>version β.7.5<br>\
 Started Jan 5, 2017<br>\
 Released Jan 19, 2017 and Mar 9, 2017<br>\
 - Minor changes:<br>\
@@ -28,33 +28,33 @@ Released Jan 19, 2017 and Mar 9, 2017<br>\
 - - Bug #5<br>\
 - - Various undocumented bugs<br>\
 </h3><hr>\
-<h3 class='menutext' style='text-align: left; margin-left: 10px'>version 1.7.0<br>\
+<h3 class='menutext' style='text-align: left; margin-left: 10px'>version β.7.0<br>\
 Started Sep 14, 2016<br>\
 Released Sep 15, 2016<br>\
 - Various bug fixes<br>\
 - Clarified things in level editor<br>\
 - Added the character filter option<br>\
 </h3><hr>\
-<h3 class='menutext' style='text-align: left; margin-left: 10px'>version 1.6.0<br>\
+<h3 class='menutext' style='text-align: left; margin-left: 10px'>version β.6.0<br>\
 Started Sep 2, 2016<br>\
 Released Sep 2, 2016<br>\
 - Renamed 'portal' to 'exit'<br>\
 - Labeled block select in editor<br>\
 - Various bug fixes<br>\
 </h3><hr>\
-<h3 class='menutext' style='text-align: left; margin-left: 10px'>version 1.5.0<br>\
+<h3 class='menutext' style='text-align: left; margin-left: 10px'>version β.5.0<br>\
 started Jul 25, 2016<br>\
 released Jul 27, 2016<br>\
 - Added todo list and bug watch list<br>\
 - Changed update number format to [major].[minor].[bugfix]<br>\
 </h3><hr>\
-<h3 class='menutext' style='text-align: left; margin-left: 10px'>version 1.4<br>\
+<h3 class='menutext' style='text-align: left; margin-left: 10px'>version β.4<br>\
 started Jul 24, 2016<br>\
 released Jul 24, 2016<br>\
 - Fixed fireworks<br>\
 - Fully removed extra songs<br>\
 </h3><hr>\
-<h3 class='menutext' style='text-align: left; margin-left: 10px'>version 1.3<br>\
+<h3 class='menutext' style='text-align: left; margin-left: 10px'>version β.3<br>\
 started: Jul 24, 2016<br>\
 released: Jul 24, 2016<br>\
 - Removed unnecessary files from source<br>\
@@ -64,6 +64,6 @@ released: Jul 24, 2016<br>\
 - Added download button<br>\
 </h3><hr>\
 <h3 class='menutext' style='text-align: left; margin-left: 10px'>\
-Change logs for versions 1.2 and earlier were not kept, sorry.<br>\
+Change logs for versions β.2 and earlier were not kept, sorry.<br>\
 <hr>\
 (END OF CHANGELOG)</h3>";
