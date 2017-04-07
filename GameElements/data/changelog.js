@@ -3,7 +3,7 @@ var changelog=
 Started Mar 24, 2017<br>\
 Released --- --, ----<br>\
 - Minor changes:<br>\
-- - Replaced track 0<br>\
+- - Replaced most of the music<br>\
 - - Added copyright notices to credits<br>\
 - - Song names in level editor<br>\
 - Bugfixes:<br>\
