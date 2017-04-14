@@ -21,9 +21,9 @@ function uploadCustom(id) {
 }
 requestedPack=location.search;
 if(!localStorage.e5_googame_sfx_volume)
-	localStorage.e5_googame_sfx_volume="1";
+	localStorage.e5_googame_sfx_volume="0.25";
 if(!localStorage.e5_googame_music_volume)
-	localStorage.e5_googame_music_volume="1";
+	localStorage.e5_googame_music_volume="0.25";
 tick = 0;
 function timer()
 {

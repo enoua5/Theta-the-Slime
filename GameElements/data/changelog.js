@@ -8,6 +8,7 @@ Released --- --, ----<br>\
 - - Song names in level editor<br>\
 - Bugfixes:<br>\
 - - Fixed loop playing over intro<br>\
+- - Lined up music loops better<br>\
 </h3><hr>\
 <h3 class='menutext' style='text-align: left; margin-left: 10px'>version b.7.5<br>\
 Started Jan 5, 2017<br>\
