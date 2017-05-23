@@ -175,7 +175,7 @@ function endGame()
 	                asdf += String.fromCharCode(c[n]);
 	            }
 	            localStorage.e5_goo_coins = asdf;
-	            document.getElementById("coinCount" + workingNum).innerHTML = coinCounter;
+	            //document.getElementById("coinCount" + workingNum).innerHTML = coinCounter;
 	        }
 	        if (deathCounter < d[workingNum]) {
 	            //console.log("death counter"+deathCounter)
@@ -185,7 +185,7 @@ function endGame()
 	                asdf += String.fromCharCode(d[n]);
 	            }
 	            localStorage.e5_goo_deaths = asdf;
-	            document.getElementById("deathCount" + workingNum).innerHTML = deathCounter;
+	            //document.getElementById("deathCount" + workingNum).innerHTML = deathCounter;
 	        }
 	    }
 	    if (requestedPack == "?bonus")
@@ -198,7 +198,7 @@ function endGame()
 	                asdf += String.fromCharCode(cb[n]);
 	            }
 	            localStorage.e5_goo_coinsB = asdf;
-	            document.getElementById("coinCount" + workingNum).innerHTML = coinCounter;
+	            //document.getElementById("coinCount" + workingNum).innerHTML = coinCounter;
 	        }
 	        if (deathCounter < db[workingNum]) {
 	            //console.log("death counter"+deathCounter)
@@ -208,7 +208,7 @@ function endGame()
 	                asdf += String.fromCharCode(db[n]);
 	            }
 	            localStorage.e5_goo_deathsB = asdf;
-	            document.getElementById("deathCount" + workingNum).innerHTML = deathCounter;
+	            //document.getElementById("deathCount" + workingNum).innerHTML = deathCounter;
 	        }
 	    }
 	    if (requestedPack == "?special") {
@@ -220,7 +220,7 @@ function endGame()
 	                asdf += String.fromCharCode(cs[n]);
 	            }
 	            localStorage.e5_goo_coinsS = asdf;
-	            document.getElementById("coinCount" + workingNum).innerHTML = coinCounter;
+	            //document.getElementById("coinCount" + workingNum).innerHTML = coinCounter;
 	        }
 	        if (deathCounter < ds[workingNum]) {
 	            //console.log("death counter"+deathCounter)
@@ -230,12 +230,12 @@ function endGame()
 	                asdf += String.fromCharCode(ds[n]);
 	            }
 	            localStorage.e5_goo_deathsS = asdf;
-	            document.getElementById("deathCount" + workingNum).innerHTML = deathCounter;
+	            //document.getElementById("deathCount" + workingNum).innerHTML = deathCounter;
 	        }
 	    }
 	    sfx.levelComp.addEventListener("ended", function () {
 	        localStorage.reloaded = "0";
-	        location.reload();
+	        location.assign("select.html"+requestedPack);
 	    });
 	}, 20);
 }
