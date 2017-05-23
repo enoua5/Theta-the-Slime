@@ -1,5 +1,6 @@
 //load save data
-if(localStorage.e5_goo_deaths===undefined)
+debugger;
+if(localStorage.e5_goo_deaths===undefined || localStorage.e5_goo_deaths==="")
 {
 	var asdf="";
 	for(n=0; n<levels.length; n++)
@@ -8,7 +9,7 @@ if(localStorage.e5_goo_deaths===undefined)
 	}
 	localStorage.e5_goo_deaths=asdf
 }
-if(localStorage.e5_goo_coins===undefined)
+if(localStorage.e5_goo_coins===undefined || localStorage.e5_goo_coins==="")
 {
 	var asdf="";
 	for(n=0; n<levels.length; n++)
@@ -17,28 +18,28 @@ if(localStorage.e5_goo_coins===undefined)
 	}
 	localStorage.e5_goo_coins=asdf
 }
-if (localStorage.e5_goo_deathsB === undefined) {
+if (localStorage.e5_goo_deathsB === undefined || localStorage.e5_goo_deathsB==="") {
     var asdf = "";
     for (n = 0; n < levels.length; n++) {
         asdf += String.fromCharCode(255)
     }
     localStorage.e5_goo_deathsB = asdf;
 }
-if (localStorage.e5_goo_coinsB === undefined) {
+if (localStorage.e5_goo_coinsB === undefined || localStorage.e5_goo_coinsB==="") {
     var asdf = "";
     for (n = 0; n < levels.length; n++) {
         asdf += String.fromCharCode(0)
     }
     localStorage.e5_goo_coinsB = asdf;
 }
-if (localStorage.e5_goo_deathsS === undefined) {
+if (localStorage.e5_goo_deathsS === undefined || localStorage.e5_goo_deathsS==="") {
     var asdf = "";
     for (n = 0; n < levels.length; n++) {
         asdf += String.fromCharCode(255)
     }
     localStorage.e5_goo_deathsS = asdf;
 }
-if (localStorage.e5_goo_coinsS === undefined) {
+if (localStorage.e5_goo_coinsS === undefined || localStorage.e5_goo_coinsS==="") {
     var asdf = "";
     for (n = 0; n < levels.length; n++) {
         asdf += String.fromCharCode(0)
