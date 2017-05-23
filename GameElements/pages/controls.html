@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>controls</title>
+    <link rel="stylesheet" type="text/css" href="css/controls.css"/>
+    <script src="js/path.js"></script>
+    <script src="js/controls.js"></script>
+</head>
+<body onload="icon()" onunload="home()" style="color: white; background: black; overflow: hidden">
+<div id="slider" style="background: black; height: 500px; width: 10000000px; position: absolute; text-align: center">
+    <div id="pane1" style="position: absolute; top: 0; left: 0; width: 700px; height: 500px; background: black; overflow: hidden">
+        <h1>Welcome to Theta the Slime!</h1>
+        <h3>In this game you play as a slimeball named Theta.</h3>
+        <div id="img0" style="display: inline-block; height: 60px; width: 60px; margin-top: 100px; background-size: 320px 320px; background-position: -240px -240px"></div>
+    </div>
+    <div id="pane2" style="position: absolute; top: 0; left: 700px; width: 700px; height: 500px; background: black; overflow: hidden">
+        <h1>Theta wants to explore the world.</h1>
+        <h3>It has many interesting things to find.</h3>
+        <h3>Like shiny disks</h3>
+        <div id="img1" style="display: inline-block; height: 60px; width: 60px; margin-top: 50px; background-size: 60px 60px;"></div>
+        <h3>And doors to even more cool places!</h3>
+        <div id="img4" style="display: inline-block; height: 60px; width: 60px; margin-top: 50px; background-size: 60px 60px;"></div>
+    </div><div id="pane3" style="position: absolute; top: 0; left: 1400px; width: 700px; height: 500px; background: black; overflow: hidden">
+        <h1>But the world is a dangerous place.</h1>
+        <h3>It has spikes</h3>
+        <div id="img2" style="display: inline-block; height: 60px; width: 60px; margin-top: 50px; background-size: 60px 60px;"></div>
+        <h3>And lava!!</h3>
+        <div id="img3" style="display: inline-block; height: 60px; width: 60px; margin-top: 50px; background-size: 60px 60px;"></div>
+
+    </div>
+    <div id="pane4" style="position: absolute; top: 0; left: 2100px; width: 700px; height: 500px; background: black; overflow: hidden">
+        <h1>Not only that.</h1>
+        <h3>All land, and even spikes are invisible!</h3>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <h3>[Image of invisibility]</h3>
+    </div>
+    <div id="pane5" style="position: absolute; top: 0; left: 2800px; width: 700px; height: 500px; background: black; overflow: hidden">
+        <h1>But Theta can find his way through.</h1>
+        <h3>Because he explodes when he gets hurt</h3>
+        <h3>And the goo he leaves behind shows up on the invisible.</h3>
+        <div id="img5" style="display: inline-block; height: 60px; width: 60px; margin-top: 100px; background-size: 60px 60px;"></div>
+    </div>
+    <div id="pane6" style="position: absolute; top: 0; left: 3500px; width: 700px; height: 500px; background: black; overflow: hidden; text-align: left;">
+        <h1 style="text-align:center">Controls</h1>
+        <h3 style="margin-left:50px">Walking:</h3>
+        <h3 style="margin-left:50px">&emsp;&emsp;[A] or [←] to move left.</h3>
+        <h3 style="margin-left:50px">&emsp;&emsp;[D] or [→] to move right.</h3>
+        <h3 style="margin-left:50px">Jumping and Swimming:</h3>
+        <h3 style="margin-left:50px">&emsp;&emsp;[W], [SPACEBAR] or [↑] to jump if on the ground, or swim if in water.</h3>
+        <h3 style="margin-left:50px">&emsp;&emsp;You can also proform a double jump.</h3>
+        <h3 style="margin-left:50px">Self Destruct</h3>
+        <h3 style="margin-left:50px">&emsp;&emsp;[E] to explode yourself.</h3>
+    </div>
+</div>
+<div id="leftHider" style="background: black; left: 0; top: 0; position: absolute;"></div>
+<div id="rightHider" style="background: black; right: 0; top: 0; position: absolute;"></div>
+<h1 id="leftArrow"  style="color: white; position: absolute;" onclick="pane--"><</h1>
+<h1 id="rightArrow" style="color: white; position: absolute;" onclick="pane++">></h1>
+</body>
+</html>
