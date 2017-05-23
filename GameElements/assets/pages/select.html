@@ -7,15 +7,20 @@
 
 <link rel="stylesheet" type="text/css" href="css/player.css"/>
 
+<script>
+	packs={premade:[], bonus:[], special:[]};
+	requestedPack="";
+</script>
+
 <script src="js/path.js"></script>
-<script src="js/select/settings.js"></script>
+<script src="js/select/functions.js"></script>
 <script src="levels/premade.js"></script>
 <script src="levels/bonus.js"></script>
 <script src="levels/special.js"></script>
+<script src="js/select/settings.js"></script>
 <script src="levels/custom.js"></script>
 <script src="js/select/load.js"></script>
 <script src="js/select/select.js"></script>
-<script src="js/select/functions.js"></script>
 
 </head>
 <body style="background: black; text-align: center;-webkit-user-select: none;" onload="setTimeout(displaySelect, 100);">

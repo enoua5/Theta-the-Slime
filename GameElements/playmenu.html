@@ -12,12 +12,17 @@
 		if(document.getElementById("back").getBoundingClientRect().top<60)
 			document.getElementById("back").style.top="60px";
 	}
+	var packs={premade:[], bonus:[], special:[]}
+	requestedPack="";
 </script>
+<script src="assets/pages/js/path.js"></script>
+<script src="assets/pages/levels/premade.js"></script>
+<script src="assets/pages/levels/bonus.js"></script>
+<script src="assets/pages/levels/special.js"></script>
 <script src="js/buttons.js"></script>
 <script src="js/audio.js"></script>
 <script src="js/play.js"></script>
 <script src="js/code.js"></script>
-<script src="assets/pages/js/path.js"></script>
 </head>
 <body style="background: black" onload="unlock(); working=true; adjHeight()">
 <div style="width: 120px; height: 30px; position: absolute; top:0; right: 0; background:url(assets/stageimg/home.png)" onclick="home()"></div>
@@ -25,8 +30,8 @@
 <div style="width:1200px;height:680px;margin-left: auto;margin-right: auto; text-align:center; position: relative" id="back">
 <h1 id="title" style="font-family:gooLarge; top: 30px; position: relative; color:red; font-size:70pt">Level Packs</h1>
 <div style="top: 177px" class="button" onClick="nav(0)" id="button0"><div id="plat0" class="plat"></div><span class="buttontext">premade levels</span></div>
-<div style="top: 272px" class="button" onClick="nav(4)" id="secretButton"><div id="plat3" class="plat"></div><span class="buttontext" id="secret">collect 37 coins to unlock</span></div>
-<div style="top: 367px" class="button" onClick="nav(5)" id="secretButton2"><div id="plat4" class="plat"></div><span class="buttontext" id="secret2">collect 93 coins to unlock</span></div>
+<div style="top: 272px" class="button" onClick="nav(4)" id="secretButton"><div id="plat3" class="plat"></div><span class="buttontext" id="secret">collect ** more coins to unlock</span></div>
+<div style="top: 367px" class="button" onClick="nav(5)" id="secretButton2"><div id="plat4" class="plat"></div><span class="buttontext" id="secret2">collect ** more coins to unlock</span></div>
 <div style="top: 462px" class="button" onClick="nav(2)" id="button2"><div id="plat2" class="plat"></div><span class="buttontext">level editor</span></div>
 <div style="top: 557px" class="button" onClick="nav(1)" id="button1"><div id="plat1" class="plat"></div><span class="buttontext">play custom levels</span></div>
 <!---->

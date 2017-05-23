@@ -3,7 +3,7 @@
 	ver={
 		maj: 'b',
 		min: 8,
-		bug: 3
+		bug: 4
 	}
 </script>
 <title>Home</title>
@@ -24,7 +24,13 @@
 		if(document.getElementById("back").getBoundingClientRect().top<60)
 			document.getElementById("back").style.top="60px";
 	}
+	var packs={premade:[], bonus:[], special:[]};
+	requestedPack="";
 </script>
+<script src="assets/pages/js/path.js"></script>
+<script src="assets/pages/levels/premade.js"></script>
+<script src="assets/pages/levels/bonus.js"></script>
+<script src="assets/pages/levels/special.js"></script>
 <script src="js/buttons.js"></script>
 <script src="js/derp.js"></script>
 <script src="js/panes.js"></script>

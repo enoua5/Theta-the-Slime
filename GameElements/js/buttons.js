@@ -37,6 +37,38 @@ function sameArray(a1,a2)
     }
     return true;
 }
+function sum(arr)
+{
+	var tot=0;
+	for(var i=0; i<arr.length; i++)
+		tot+=arr[i];
+	return tot;
+}
+function getTotalCoins()
+{
+	return sum(c)+sum(c2)+sum(c3);
+}
+function getFullCoins(pack)
+{
+	var ret=new Array(pack.length)
+	for(var i=0; i<pack.length; i++)
+	{
+		var tot=0;
+		for(var x=0; x<pack[i].data.length; x++)
+			for(var y=0; y<pack[i].data[x].length; y++)
+			{
+				var id=0;
+				if(typeof(pack[i].data[x][y])=="number")
+					id=pack[i].data[x][y];
+				else if(typeof(pack[i].data[x][y])=="object")
+					id=pack[i].data[x][y].id;
+				if(id==8)
+					tot++;
+			}
+		ret[i]=tot;
+	}
+	return ret;
+}
 function fillContent()
 {
     document.getElementById("changelog").innerHTML+=changelog;
@@ -51,14 +83,14 @@ function fillContent()
 	document.getElementById("watchlist").innerHTML+="<h3 class='menutext' style='text-align:left; margin-left: 10px; color:"+["red","green"][watchlist[l].resolved]+"'>"+(l.toString(16))+" - "+watchlist[l].content+"</h3>";
     }
     document.getElementById("versionNumber").innerHTML="v"+ver.maj+"."+ver.min+"."+ver.bug;
-    if (sameArray(c3, [3, 14, 4, 3, 4, 5, 0, 3, 1]))
+    if (getTotalCoins()>=cmax1+cmax2+cmax3)
     {
         document.getElementById("player").style.background = "url(assets/chars/9/9.png)";
     }
 }
 function unlock()
 {
-    if(sameArray(c,[1, 2, 3, 4, 4, 4, 3, 9, 7]))
+    if(getTotalCoins()>=cmax1)
     {
         unlocked = true;
         document.getElementById("secret").innerHTML = "play bonus levels";
@@ -66,8 +98,9 @@ function unlock()
     else
     {
         document.getElementById("secretButton").style.background = "grey";
+	document.getElementById("secret").innerHTML = "collect "+(cmax1-getTotalCoins())+" more coins to unlock";
     }
-    if(sameArray(c2,[11,1,9,2,8,0,10,11,4]))
+    if(getTotalCoins()>=cmax1+cmax2)
     {
         unlocked2 = true;
         document.getElementById("secret2").innerHTML="play special levels"
@@ -75,8 +108,9 @@ function unlock()
     else
     {
         document.getElementById("secretButton2").style.background = "grey";
+	document.getElementById("secret2").innerHTML = "collect "+(cmax1+cmax2-getTotalCoins())+" more coins to unlock";
     }
-    if (sameArray(c3, [3, 14, 4, 3, 4, 5, 0, 3, 1]))
+    if(getTotalCoins()>=cmax1+cmax2+cmax3)
     {
         document.getElementById("player").style.background = "url(assets/chars/9/9.png)";
     }
@@ -103,3 +137,6 @@ if (localStorage.e5_goo_coinsS) {
         c3[n] = localStorage.e5_goo_coinsS[n].charCodeAt()
     }
 }
+cmax1=sum(getFullCoins(packs.premade));
+cmax2=sum(getFullCoins(packs.bonus));
+cmax3=sum(getFullCoins(packs.special));

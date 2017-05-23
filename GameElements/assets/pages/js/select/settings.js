@@ -1,6 +1,6 @@
-maxc1= [1, 2, 3, 4, 4, 4, 3, 9, 7];
-maxc2 = [11, 1, 9, 2, 8, 0, 10, 11, 4];
-maxc3 = [3, 14, 4, 3, 4, 5, 0, 3, 1];
+maxc1=getFullCoins(packs.premade);
+maxc2=getFullCoins(packs.bonus);
+maxc3=getFullCoins(packs.special);
 function uploadCustom(id) {
     newLevelData = prompt("paste level data here");
     if (newLevelData !== "" && newLevelData !== null) {
@@ -29,4 +29,3 @@ function addLevel(levelObject)
 	if(levelObject!==undefined)
 		levels[levels.length]=levelObject;
 }
-levels=[]
