@@ -1,5 +1,4 @@
 //load save data
-debugger;
 if(localStorage.e5_goo_deaths===undefined || localStorage.e5_goo_deaths==="")
 {
 	var asdf="";
