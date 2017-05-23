@@ -6,6 +6,8 @@ Released --- --, ----<br>\
 - - Replaced most of the music<br>\
 - - Added copyright notices to credits<br>\
 - - Song names in level editor<br>\
+- - Changed some of the background images<br>\
+- - Seperated level select and level player<br>\
 - Bugfixes:<br>\
 - - Fixed loop playing over intro<br>\
 - - Lined up music loops better<br>\
