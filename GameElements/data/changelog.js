@@ -1,7 +1,7 @@
 var changelog=
 "<h3 class='menutext' style='text-align: left; margin-left: 10px'>version b.8.0<br>\
 Started Mar 24, 2017<br>\
-Released --- --, ----<br>\
+Released May 24, 2017<br>\
 - Minor changes:<br>\
 - - Replaced most of the music<br>\
 - - Added copyright notices to credits<br>\
