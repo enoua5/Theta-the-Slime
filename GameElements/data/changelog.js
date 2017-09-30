@@ -1,5 +1,11 @@
 var changelog=
-"<h3 class='menutext' style='text-align: left; margin-left: 10px'>version b.8.0<br>\
+"<h3 class='menutext' style='text-align: left; margin-left: 10px'>version 1.0.0<br>\
+Started Sep 30, 2017<br>\
+Released Sep 30, 2017<br>\
+- Major changes:<br>\
+- - This is the final release, I just got the game functioning correctly<br>\
+</h3><hr>\
+<h3 class='menutext' style='text-align: left; margin-left: 10px'>version b.8.0<br>\
 Started Mar 24, 2017<br>\
 Released May 24, 2017<br>\
 - Minor changes:<br>\
