@@ -48,9 +48,9 @@ dubJump=0;
 holdingDownJump=0;
 document.addEventListener('keydown', function(event)
 {
+    event.preventDefault();
     if(working)
     {
-        event.preventDefault();
         var key=event.keyCode
         if(key===69)
         {
