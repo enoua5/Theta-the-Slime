@@ -10,7 +10,7 @@ function download()
 }
 function nav(id)
 {
-	localStorage.reloaded="0";
+	localStorage.setItem("reloaded","0");
 	if(id==-1)
 		window.location.assign("playmenu.html")
 	if(id==0)
@@ -118,23 +118,23 @@ function unlock()
 unlocked = false;
 unlocked2 = false;
 c = [];
-if(localStorage.e5_goo_coins)
+if(localStorage.getItem("e5_goo_coins"))
 {
-    for(n=0;n<localStorage.e5_goo_coins.length;n++)
+    for(n=0;n<localStorage.getItem("e5_goo_coins").length;n++)
     {
-        c[n] = localStorage.e5_goo_coins[n].charCodeAt()
+        c[n] = localStorage.getItem("e5_goo_coins")[n].charCodeAt()
     }
 }
 c2 = [];
-if (localStorage.e5_goo_coinsB) {
-    for (n = 0; n < localStorage.e5_goo_coinsB.length; n++) {
-        c2[n] = localStorage.e5_goo_coinsB[n].charCodeAt()
+if (localStorage.getItem("e5_goo_coinsB")) {
+    for (n = 0; n < localStorage.getItem("e5_goo_coinsB").length; n++) {
+        c2[n] = localStorage.getItem("e5_goo_coinsB")[n].charCodeAt()
     }
 }
 c3 = [];
-if (localStorage.e5_goo_coinsS) {
-    for (n = 0; n < localStorage.e5_goo_coinsS.length; n++) {
-        c3[n] = localStorage.e5_goo_coinsS[n].charCodeAt()
+if (localStorage.getItem("e5_goo_coinsS")) {
+    for (n = 0; n < localStorage.getItem("e5_goo_coinsS").length; n++) {
+        c3[n] = localStorage.getItem("e5_goo_coinsS")[n].charCodeAt()
     }
 }
 cmax1=sum(getFullCoins(packs.premade));
