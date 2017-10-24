@@ -3,7 +3,7 @@
 	ver={
 		maj: 1,
 		min: 0,
-		bug: 0
+		bug: 1
 	}
 </script>
 <title>Home</title>
@@ -18,7 +18,7 @@
 <link href="style.css" type="text/css" rel="stylesheet"/>
 <!-- JavaScript -->
 <script>
-	localStorage.reloaded="0";
+	localStorage.setItem("reloaded","0");
 	function adjHeight()
 	{
 		if(document.getElementById("back").getBoundingClientRect().top<60)
