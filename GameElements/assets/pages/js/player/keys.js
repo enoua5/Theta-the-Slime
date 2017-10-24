@@ -1,5 +1,6 @@
 document.addEventListener('keydown', function(event)
 {
+	event.preventDefault();
 	if(working)
 	{
 		var key=event.keyCode
@@ -26,6 +27,7 @@ document.addEventListener('keydown', function(event)
 }, false);
 document.addEventListener('keyup', function(event)
 {
+	event.preventDefault();
 	if(working)
 	{
 		var key=event.keyCode
