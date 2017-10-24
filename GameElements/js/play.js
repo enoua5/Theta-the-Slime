@@ -50,6 +50,7 @@ document.addEventListener('keydown', function(event)
 {
     if(working)
     {
+        event.preventDefault();
         var key=event.keyCode
         if(key===69)
         {
@@ -74,6 +75,7 @@ document.addEventListener('keydown', function(event)
 }, false);
 document.addEventListener('keyup', function(event)
 {
+    event.preventDefault();
     if(working)
     {
         var key=event.keyCode
