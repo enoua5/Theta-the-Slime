@@ -1,8 +1,8 @@
 document.addEventListener('keydown', function(event)
 {
+	event.preventDefault();
 	if(working)
 	{
-		event.preventDefault();
 		var key=event.keyCode
 		if(key===69)
 		{
@@ -27,9 +27,9 @@ document.addEventListener('keydown', function(event)
 }, false);
 document.addEventListener('keyup', function(event)
 {
+	event.preventDefault();
 	if(working)
 	{
-		event.preventDefault();
 		var key=event.keyCode
 		if((key===37||key===65)&&direction===-1)
 		{
