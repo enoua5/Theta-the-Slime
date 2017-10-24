@@ -174,7 +174,7 @@ function endGame()
 	            for (n = 0; n < c.length; n++) {
 	                asdf += String.fromCharCode(c[n]);
 	            }
-	            localStorage.e5_goo_coins = asdf;
+	            localStorage.setItem("e5_goo_coins", asdf);
 	            //document.getElementById("coinCount" + workingNum).innerHTML = coinCounter;
 	        }
 	        if (deathCounter < d[workingNum]) {
@@ -184,7 +184,7 @@ function endGame()
 	            for (n = 0; n < d.length; n++) {
 	                asdf += String.fromCharCode(d[n]);
 	            }
-	            localStorage.e5_goo_deaths = asdf;
+	            localStorage.setItem("e5_goo_deaths", asdf);
 	            //document.getElementById("deathCount" + workingNum).innerHTML = deathCounter;
 	        }
 	    }
@@ -197,7 +197,7 @@ function endGame()
 	            for (n = 0; n < cb.length; n++) {
 	                asdf += String.fromCharCode(cb[n]);
 	            }
-	            localStorage.e5_goo_coinsB = asdf;
+	            localStorage.setItem("e5_goo_coinsB", asdf);
 	            //document.getElementById("coinCount" + workingNum).innerHTML = coinCounter;
 	        }
 	        if (deathCounter < db[workingNum]) {
@@ -207,7 +207,7 @@ function endGame()
 	            for (n = 0; n < db.length; n++) {
 	                asdf += String.fromCharCode(db[n]);
 	            }
-	            localStorage.e5_goo_deathsB = asdf;
+	            localStorage.setItem("e5_goo_deathsB", asdf);
 	            //document.getElementById("deathCount" + workingNum).innerHTML = deathCounter;
 	        }
 	    }
@@ -219,7 +219,7 @@ function endGame()
 	            for (n = 0; n < cs.length; n++) {
 	                asdf += String.fromCharCode(cs[n]);
 	            }
-	            localStorage.e5_goo_coinsS = asdf;
+	            localStorage.setItem("e5_goo_coinsS", asdf);
 	            //document.getElementById("coinCount" + workingNum).innerHTML = coinCounter;
 	        }
 	        if (deathCounter < ds[workingNum]) {
@@ -229,12 +229,12 @@ function endGame()
 	            for (n = 0; n < ds.length; n++) {
 	                asdf += String.fromCharCode(ds[n]);
 	            }
-	            localStorage.e5_goo_deathsS = asdf;
+	            localStorage.setItem("e5_goo_deathsS", asdf);
 	            //document.getElementById("deathCount" + workingNum).innerHTML = deathCounter;
 	        }
 	    }
 	    sfx.levelComp.addEventListener("ended", function () {
-	        localStorage.reloaded = "0";
+	        localStorage.setItem("reloaded", "0");
 	        location.assign("select.html"+requestedPack);
 	    });
 	}, 20);
