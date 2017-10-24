@@ -1,8 +1,8 @@
 requestedPack=location.search.split("&")[0];
-if(!localStorage.e5_googame_sfx_volume)
-	localStorage.e5_googame_sfx_volume="0.25";
-if(!localStorage.e5_googame_music_volume)
-	localStorage.e5_googame_music_volume="0.25";
+if(!localStorage.getItem("e5_googame_sfx_volume"))
+	localStorage.setItem("e5_googame_sfx_volume","0.25");
+if(!localStorage.getItem("e5_googame_music_volume"))
+	localStorage.setItem("e5_googame_music_volume","0.25");
 tick = 0;
 function timer()
 {
