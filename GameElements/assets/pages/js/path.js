@@ -12,7 +12,7 @@ function home()
 }
 function back()
 {
-	localStorage.reloaded="0";
+	localStorage.setItem("reloaded","0");
 	window.location.assign("../../playmenu.html");
 }
 var paths=window.location.href.split("assets");
@@ -21,8 +21,8 @@ for(i=0; i<paths.length-1; i++)
 {
 	path+=paths[i]+"assets"
 }
-if(localStorage.reloaded==="1")
+if(localStorage.getItem("reloaded")==="1")
 {
 	home();
 }
-localStorage.reloaded="1";
+localStorage.setItem("reloaded", "1");
