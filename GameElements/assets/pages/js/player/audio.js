@@ -37,16 +37,16 @@ menuloop.addEventListener("ended", function () {
 function updateSfx()
 {
 	sfx.death.pause();
-	sfx.coin.volume=parseFloat(localStorage.e5_googame_sfx_volume);
-	sfx.death.volume=parseFloat(localStorage.e5_googame_sfx_volume);
-	sfx.jump.volume=parseFloat(localStorage.e5_googame_sfx_volume);
-	sfx.dubJump.volume=parseFloat(localStorage.e5_googame_sfx_volume);
-	sfx.landing.volume=parseFloat(localStorage.e5_googame_sfx_volume);
-	sfx.levelComp.volume=parseFloat(localStorage.e5_googame_sfx_volume);
+	sfx.coin.volume=parseFloat(localStorage.getItem("e5_googame_sfx_volume"));
+	sfx.death.volume=parseFloat(localStorage.getItem("e5_googame_sfx_volume"));
+	sfx.jump.volume=parseFloat(localStorage.getItem("e5_googame_sfx_volume"));
+	sfx.dubJump.volume=parseFloat(localStorage.getItem("e5_googame_sfx_volume"));
+	sfx.landing.volume=parseFloat(localStorage.getItem("e5_googame_sfx_volume"));
+	sfx.levelComp.volume=parseFloat(localStorage.getItem("e5_googame_sfx_volume"));
 	sfx.death.play();
 }
 function updateMusic()
 {
-	workingIntro.volume=parseFloat(localStorage.e5_googame_music_volume);
-	workingLoop.volume=parseFloat(localStorage.e5_googame_music_volume);
+	workingIntro.volume=parseFloat(localStorage.getItem("e5_googame_music_volume"));
+	workingLoop.volume=parseFloat(localStorage.getItem("e5_googame_music_volume"));
 }
